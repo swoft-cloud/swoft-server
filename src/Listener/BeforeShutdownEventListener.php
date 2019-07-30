@@ -13,6 +13,7 @@ use Swoft\Event\EventInterface;
 use Swoft\Log\Helper\Log;
 use Swoft\Server\Context\ShutdownContext;
 use Swoft\Server\ServerEvent;
+use Swoft\Server\SwooleEvent;
 
 /**
  * Class BeforeShutdownEventListener
@@ -36,7 +37,7 @@ class BeforeShutdownEventListener implements EventHandlerInterface
 
         if (Log::getLogger()->isEnable()) {
             $data = [
-                'event'       => ServerEvent::BEFORE_SHUTDOWN_EVENT,
+                'event'       => SwooleEvent::SHUTDOWN,
                 'uri'         => '',
                 'requestTime' => microtime(true),
             ];
